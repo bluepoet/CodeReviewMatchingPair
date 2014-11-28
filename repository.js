@@ -2,12 +2,12 @@ var pair = require('./pair');
 var schedule = require('node-schedule');
 
 var mysql = require('mysql')
-  , DATABASE = 'testdb'
-  , TABLE = 'member_match_list'
+  , DATABASE = 'test'
+  , TABLE = 'test'
   , client = mysql.createConnection({
-     host: 'bluepoet1004.cafe24.com'
-    ,user: 'bluepoet'
-    ,password: 'kimyong12'
+     host: 'test.com'
+    ,user: 'test'
+    ,password: 'test1111'
     ,multipleStatements: true
 });
 
