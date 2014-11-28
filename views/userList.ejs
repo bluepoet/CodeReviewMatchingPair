@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/common.css' />
+    <style>
+      h1.fi {
+        display: none;
+      }
+    </style>
+    <script type='text/javascript' src='/javascripts/jquery-2.1.1.min.js'></script>
+    <script type='text/javascript'>
+        $(document).ready(function() {
+          $('#container').fadeIn(6500, function() {
+            $('#container').css('display','block');   
+          });
+        });
+ 
+    </script>
+  </head>
+  <body>
+    <div id="wrapper">
+    <div id="header">
+      <h1><%= title %></h1>
+    </div>
+    <div style="display:none" id="container">
+      <div class="photo">
+        <div class="arrow">
+           <img src="images/arrow.png" width="346" height="17" alt="화살표" /></div>
+          <div class="arrow2">
+          <img src="images/arrow.png" width="346" height="17" alt="화살표" /></div>
+          <div class="arrow3">
+          <img src="images/arrow.png" width="346" height="17" alt="화살표" /></div>        
+	 <ul class="photo_left">
+            <li><img src="images/<%= users[prevUsers[0].first_id-1].image_name %>" width="68" height="75" alt="우여명" /><p><%= users[prevUsers[0].first_id-1].name %></p></li>
+            <li><img src="images/<%= users[prevUsers[1].first_id-1].image_name %>" width="68" height="75" alt="강규선" /><p><%= users[prevUsers[1].first_id-1].name %></p></li>
+            <li><img src="images/<%= users[prevUsers[2].first_id-1].image_name %>" width="68" height="75" alt="김용훈" /><p><%= users[prevUsers[2].first_id-1].name %></p></li>
+         </ul>
+         <ul class="photo_right">
+         	<li><img src="images/<%= users[prevUsers[0].after_id-1].image_name %>" width="68" height="75" alt="김다일" /><p><%= users[prevUsers[0].after_id-1].name %></p></li>
+            <li><img src="images/<%= users[prevUsers[1].after_id-1].image_name %>" width="68" height="75" alt="허정안" /><p><%= users[prevUsers[1].after_id-1].name %></p></li>
+            <li><img src="images/<%= users[prevUsers[2].after_id-1].image_name %>" width="68" height="75" alt="김남수" /><p><%= users[prevUsers[2].after_id-1].name %></p></li>
+         </ul>  
+         </div>
+       </div>
+   </div>   
+  </body>
+</html>
