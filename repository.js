@@ -2,12 +2,12 @@ var pair = require('./pair');
 var schedule = require('node-schedule');
 
 var mysql = require('mysql')
-  , DATABASE = 'test'
-  , TABLE = 'test'
+  , DATABASE = 'testdb'
+  , TABLE = 'member_match_list'
   , client = mysql.createConnection({
-     host: 'test.com'
-    ,user: 'test'
-    ,password: 'test1111'
+     host: 'bluepoet1004.cafe24.com'
+    ,user: 'bluepoet'
+    ,password: 'kimyong12'
     ,multipleStatements: true
 });
 
@@ -30,14 +30,15 @@ var mysqlUtil = module.exports = {
     });     
   },
   getMembers: function() {
- client.query(
-   'SELECT *  FROM member', function(err, rows, fields) {
-     if(err) {
-       throw err;
-     }
-     
-     return rows;
-    });     
+	 var me = this;
+	 client.query(
+	   'SELECT *  FROM member', function(err, rows, fields) {
+	     if(err) {
+	       throw err;
+	     }
+	     
+	      me.result = rows;
+	  });  
   },
   extractPrevMembers: function() {
     var me = this;

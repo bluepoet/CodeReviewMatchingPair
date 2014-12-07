@@ -66,5 +66,19 @@ var CodeReview = module.exports = {
     var randomNumberIndex = Math.floor(Math.random() * (randomNumbersCnt - 1 + 1)) + 1;
 
     return randomNumbers[randomNumberIndex-1];   
-  } 
+  },
+  fakeExtractPrevMembers: function() {
+	  var me = this;
+	  for(var i=1; i<=6; i++) {
+	    if(me.existLeftNumber(i)) {
+	        continue;
+	    }
+
+	    var randomNumber = me.getRandomNumber(i);
+	    me.leftNumbers.push(i);
+	    me.leftNumbers.push(randomNumber);
+
+	    me.result.put(i, randomNumber);
+	  }
+  }
 };
