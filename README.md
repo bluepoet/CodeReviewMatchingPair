@@ -33,6 +33,7 @@ CodeReviewMatchingPair
 
 - **OS** : Ubuntu 12.04.4 LTS
 - **Editor** : Vim
+- **JDK** : 1.7.0_72
 
 DB 테이블 생성스크립트는 sql폴더밑에 두개의 파일을 실행하면 된다.
 
