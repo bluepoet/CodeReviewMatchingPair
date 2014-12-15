@@ -21,7 +21,7 @@ describe('[CodeReviewMatchingPair]DbDataConfirmTest Test Suite', function() {
 		});
 	});
 	describe('CodeReview Member Data Confirm', function() {
-		it('CodeReview Member Data Confirm', function(done) {
+		it('result count is 3, the key and value of the map is not the same', function(done) {
 			db.query(
 		      'SELECT first_id, after_id FROM member_match_list where DATE_ADD(create_date, INTERVAL 7 DAY) > NOW() AND create_date < NOW()', function(err, rows, fields) {
 		        if(err) {

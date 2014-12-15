@@ -2,12 +2,12 @@ var pair = require('./pair');
 var schedule = require('node-schedule');
 
 var mysql = require('mysql')
-  , DATABASE = 'testdb'
-  , TABLE = 'member_match_list'
+  , DATABASE = 'test'
+  , TABLE = 'test'
   , client = mysql.createConnection({
-     host: 'bluepoet1004.cafe24.com'
-    ,user: 'bluepoet'
-    ,password: 'kimyong12'
+     host: 'test.com'
+    ,user: 'test'
+    ,password: '1111'
     ,multipleStatements: true
 });
 
@@ -16,18 +16,22 @@ client.query('USE ' + DATABASE);
 var mysqlUtil = module.exports = {
   result:undefined,
   viewMembers: function(res) {
- client.query(
-   'SELECT first_id, after_id FROM ' + TABLE + ' where DATE_ADD(create_date, INTERVAL 7 DAY) > NOW() AND create_date < NOW();select * from member order by id', function(err, rows, fields) {
-     if(err) {
-       throw err;
-     }
-    
-     res.render('userList', {
-       users: rows[1],
-       prevUsers: rows[0],
-       title: 'Listing Developmemt Team CodeReview Matching Result'
-    });   	
-    });     
+	  client.query('SELECT *  FROM member', function(err, results, fields) {
+		  client.query(
+		   'SELECT first_id, after_id FROM ' + TABLE + ' where DATE_ADD(create_date, INTERVAL 7 DAY) > NOW() AND create_date < NOW();select * from member order by id', function(err, rows, fields) {
+		     if(err) {
+		       throw err;
+		     }
+		     
+		     console.log('results ' + results[0].name);
+		     
+		     res.render('userList', {
+		       users: rows[1],
+		       prevUsers: rows[0],
+		       title: 'Listing Developmemt Team CodeReview Matching Result'
+		     });   	
+		  });     
+	  });
   },
   getMembers: function() {
 	 var me = this;
@@ -37,12 +41,12 @@ var mysqlUtil = module.exports = {
 	       throw err;
 	     }
 	     
-	      me.result = rows;
+	      me.result = rows;	
 	  });  
   },
   extractPrevMembers: function() {
     var me = this;
-
+    
     client.query(
       'SELECT first_id, after_id FROM ' + TABLE + ' where DATE_ADD(create_date, INTERVAL 7 DAY) > NOW() AND create_date < NOW()', function(err, rows, fields) {
         if(err) {
